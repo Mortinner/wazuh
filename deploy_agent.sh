@@ -1,4 +1,16 @@
 #!/bin/bash
+#       Filename:-              deploy_agent.sh
+#       Version:-               1.0
+#       Updated:-               21/05/2024
+#       Author:-                Marcos Arroyo
+#       Brief descn:-           Deploy Wazuh-agents remotely
+#                               This script must be called from wazuh-sondas.sh
+#******************************************************************************
+# Update History
+#******************************************************************************
+# Ver   Date            Who             Update
+#
+#******************************************************************************
 
 # Funtion for setting package agent and download urls for diferent OS
 set_parts(){
