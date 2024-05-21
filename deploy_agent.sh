@@ -55,9 +55,8 @@ set_parts(){
 # Check if wget is installed, and install it if not
 check_wget() {
     if ! command -v wget &> /dev/null; then
-        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wget not found on remote host. Installing wget..."
-			
-		sudo $pkg_manager install -y wget > /dev/null 2>&1
+        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wget not found on remote host. Installing wget..."		
+	sudo $pkg_manager install -y wget > /dev/null 2>&1
         if [ $? -ne 0 ]; then
             echo "$(date '+%d/%m/%Y %H:%M:%S') ERROR: There was a problem installing wget on remote host system. Exiting..."
             exit 1
@@ -72,14 +71,14 @@ check_wget() {
 run_launcher (){
     wget $package_url > /dev/null 2>&1 && sudo WAZUH_MANAGER=$WAZUH_SERVER_IP WAZUH_AGENT_NAME=$(hostname) $pkg_manager_system$package_name > /dev/null 2>&1
     if [ $? -ne 0 ]; then
+        echo "$(date '+%d/%m/%Y %H:%M:%S') ERROR: There was a problem installing wazuh-agent on remote host system. Exiting..."
+    else
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent installed on remote host successfully."
         sleep 5
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: enabling wazuh-agent service on remote host successfully."
         sudo systemctl enable wazuh-agent
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: starting wazuh-agent service on remote host successfully."
         sudo systemctl start wazuh-agent
-    else
-        echo "$(date '+%d/%m/%Y %H:%M:%S') ERROR: There was a problem installing wazuh-agent on remote host system. Exiting..."
     fi
     sudo rm $package_name
     sudo rm deploy_agent.sh
