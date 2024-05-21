@@ -56,7 +56,7 @@ check_parameters() {
 # Check if sshpass is installed, and install it if not
 check_sshpass() {
     if ! command -v sshpass &> /dev/null; then
-        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: sshpass not found. checking system and updating sources..."
+        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: Checking system and updating sources..."
         if command -v apt-get &> /dev/null; then
             pkg_manager="apt-get"
             sudo apt-get update -qq
@@ -106,7 +106,7 @@ check_connectivity() {
 }
 
 install_remote_agent(){
-	sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" "wget -q https://github.com/Mortinner/wazuh/raw/main/deploy_agent.sh && echo '$password' | sudo -S bash ./deploy_agent.sh $ip_server"
+	sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" "wget -q https://github.com/Mortinner/wazuh/raw/main/deploy_agent.sh && echo '$password' | sudo -S bash ./deploy_agent.sh $ip_server > /dev/null 2>&1"
         #sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" wget -q https://github.com/Mortinner/wazuh/raw/main/deploy_agent.sh && sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" 'echo "$password" | sudo -S bash ./deploy_agent.sh $ip_server'
 
 }
