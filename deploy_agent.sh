@@ -86,10 +86,14 @@ run_launcher (){
     else
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent installed on remote host successfully."
         sleep 5
-        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: enabling wazuh-agent service on remote host successfully."
-        sudo systemctl enable wazuh-agent
-        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: starting wazuh-agent service on remote host successfully."
+        sudo systemctl enable wazuh-agent > /dev/null 2>&1
+        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: Starting service wazuh-agent on remote host."
         sudo systemctl start wazuh-agent
+	if [ $? -ne 0 ]; then
+            echo "$(date '+%d/%m/%Y %H:%M:%S') ERROR: wazuh-agent service not started on remote host. Exiting..."
+            exit 1
+        fi
+	echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent service started on remote host."
     fi
     sudo rm $package_name
     sudo rm deploy_agent.sh
