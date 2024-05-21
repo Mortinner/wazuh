@@ -20,11 +20,11 @@ WAZUH_SERVER_IP=$1
 # Check if wazuh-agent is installed, and install it if not
 check_wazuh_agent() {
     if apt list --installed 2>/dev/null | grep -q -E ^"wazuh-agent"\/; then
-        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent not found on remote host. Installing wazuh-agent..."		
-	set_parts
-    else
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent is already installed on remote host."
 	exit 1
+     else
+	echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent not found on remote host. Installing wazuh-agent..."		
+	set_parts
     fi
 }
 
