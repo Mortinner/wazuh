@@ -13,10 +13,21 @@
 #******************************************************************************
 
 # Variables
-# Parameter to variable
+# Set Parameter into variable
 WAZUH_SERVER_IP=$1
 
 # Funtions
+# Check if wazuh-agent is installed, and install it if not
+check_wazuh_agent() {
+    if ! command -v wazuh-agent &> /dev/null; then
+        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent not found on remote host. Installing wazuh-agent..."		
+	set_parts
+    else
+        echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: wazuh-agent is already installed on remote host."
+	exit 1
+    fi
+}
+
 # Funtion for setting package agent and download urls for diferent OS
 set_parts(){
     echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: Checking remote OS and updating sources..."
@@ -85,4 +96,4 @@ run_launcher (){
 }
 
 # Main
-set_parts
+check_wazuh_agent
