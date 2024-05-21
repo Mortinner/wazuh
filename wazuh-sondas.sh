@@ -15,10 +15,10 @@
 # Functions
 # Ask for required data to deploy agent
 ask_parameters() {
-        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter of this server which IP to use: " ip_server
-        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the target server IP: " ip
-        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the target server username: " user
-        read -sp "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the target server password: " password
+        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter which IP to use of this server: " ip_server
+        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the server IP target: " ip
+        read -p "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the server username target: " user
+        read -sp "$(date '+%d/%m/%Y %H:%M:%S') INFO: Please enter the server password target: " password
         echo
         check_parameters "$ip" "$user" "$password"
 }
