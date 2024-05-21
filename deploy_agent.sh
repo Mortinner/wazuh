@@ -12,9 +12,13 @@
 #
 #******************************************************************************
 
+# Variables
+# Parameter to variable
+WAZUH_SERVER_IP=$1
+
+# Funtions
 # Funtion for setting package agent and download urls for diferent OS
 set_parts(){
-    WAZUH_SERVER_IP=$1
     echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: Checking remote OS and updating sources..."
     if command -v apt-get &> /dev/null; then
         sudo apt-get update -qq
