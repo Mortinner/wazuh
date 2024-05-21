@@ -95,7 +95,7 @@ uninstall_manager() {
 install_sondas() {
         echo "$(date '+%d/%m/%Y %H:%M:%S') INFO: Installing sondas..."
         #sudo bash ./wazuh-sondas.sh
-        curl -sO https://github.com/Mortinner/wazuh/raw/main/wazuh-sondas.sh && sudo bash ./wazuh-sondas.sh
+        wget https://github.com/Mortinner/wazuh/raw/main/wazuh-sondas.sh && sudo bash ./wazuh-sondas.sh
         sudo rm wazuh-sondas.sh
 }
 
