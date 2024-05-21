@@ -106,7 +106,7 @@ check_connectivity() {
 }
 
 install_remote_agent(){
-        sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" wget https://github.com/Mortinner/wazuh/raw/main/deploy_agent.sh && sudo bash ./deploy_agent.sh $ip_server
+        sshpass -p "$password" ssh -o StrictHostKeyChecking=accept-new "$user@$ip" wget -q https://github.com/Mortinner/wazuh/raw/main/deploy_agent.sh && sudo bash ./deploy_agent.sh $ip_server
 }
 
 # Ask yes or no to user, to try again whole script removing variables
