@@ -3,13 +3,18 @@
 #       Version:-               1.0
 #       Updated:-               15/05/2024
 #       Author:-                Marcos Arroyo
-#       Brief descn:-           Deploy or re-deploy Wazuh-manager and call or 
+#       Brief descn:-           Deploy or re-deploy Wazuh-manager and call or
 #                               not wazuh-sondas.sh to install agents remotely
 #******************************************************************************
 # Update History
 #******************************************************************************
 # Ver   Date            Who             Update
 #
+#******************************************************************************
+# License
+# This program is a free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (version 2) as published
+# by the FSF - Free Software Foundation.
 #******************************************************************************
 
 # Functions
@@ -45,19 +50,24 @@ check_params() {
 
         case $1 in
                 -a|--all)
+                        welcome
                         install_manager
                         install_sondas
                         ;;
                 -o|--overwrite)
+                        welcome
                         overwrite_manager
                         ;;
                 -m|--manager)
+                        welcome
                         install_manager
                         ;;
                 -u|--uninstall)
+                        welcome
                         uninstall_manager
                         ;;
                 -s|--sondas)
+                        welcome
                         install_sondas
                         ;;
                 -h|--help)
@@ -99,5 +109,20 @@ install_sondas() {
         sudo rm wazuh-sondas.sh
 }
 
+welcome(){
+echo "+------------------------------------------------------------------------+
+|                              WELCOME TO                                |
+|                                                                        |
+|                       SSSSSS      A      DDDDD                         |
+|                       S          A A     D    D                        |
+|                       SSSSSS    A   A    D     D                       |
+|                            S   AAAAAAA   D    D                        |
+|                       SSSSSS  A       A  DDDDD                         |
+|                                                                        |
+|                       SOC AUTOMATION DEPLOYEMENT                       |
++------------------------------------------------------------------------+"
+}
+
 # MAIN
 check_params "$@"
+
