@@ -165,8 +165,8 @@ El script validará automáticamente:
 - **Aceptación de claves SSH**: Configuración automática de StrictHostKeyChecking
 
 ### Consideraciones de Seguridad
-- Las contraseñas se pasan como parámetros a sshpass (considerar el uso de claves SSH)
-- Los scripts descargan código desde GitHub (verificar la integridad)
+- Las contraseñas se pasan como parámetros a sshpass
+- Los scripts descargan código desde GitHub
 - Se requieren privilegios elevados para la instalación
 
 ## 📝 Logs y Monitoreo
@@ -208,7 +208,7 @@ INFO: wazuh-agent is already installed on remote host.
 ## 🔄 Versiones y Compatibilidad
 
 ### Versiones de Wazuh
-- **Wazuh Manager**: 4.7 (última versión estable)
+- **Wazuh Manager**: 4.7
 - **Wazuh Agent**: 4.7.4
 
 ### Sistemas Operativos Soportados
@@ -243,5 +243,3 @@ Para más información sobre Wazuh:
 - [Configuración de Agentes](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/)
 
 ---
-
-**Nota**: Este README cubre la funcionalidad completa del sistema de automatización. Para uso en producción, considera implementar autenticación por claves SSH en lugar de contraseñas.
